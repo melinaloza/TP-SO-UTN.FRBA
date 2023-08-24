@@ -1,0 +1,8 @@
+#!/bin/bash
+FILE=bin/cpu
+mkdir -p logs
+make clean
+make
+if test -f "./$FILE"; then
+    valgrind --tool=helgrind ./$FILE
+fi

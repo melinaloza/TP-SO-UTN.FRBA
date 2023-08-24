@@ -1,0 +1,8 @@
+#!/bin/bash
+FILE=bin/consola
+mkdir -p logs
+make clean
+make
+if test -f "./$FILE"; then
+    ./$FILE ./config/console.config $1
+fi

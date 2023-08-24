@@ -1,0 +1,9 @@
+#!/bin/bash
+FILE=bin/filesystem
+mkdir -p logs
+mkdir -p fs
+make clean
+make
+if test -f "./$FILE"; then
+    valgrind --tool=memcheck --leak-check=yes --show-possibly-lost=yes --show-reachable=yes --num-callers=20 --track-origins=yes ./$FILE
+fi
